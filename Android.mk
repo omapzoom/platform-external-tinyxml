@@ -29,13 +29,14 @@ include $(BUILD_HOST_STATIC_LIBRARY)
 
 # For the device
 # =====================================================
-#include $(CLEAR_VARS)
-#
-#LOCAL_SRC_FILES:= \
-#	$(commonSources)
-#
-#LOCAL_MODULE:= libtinyxml
-#
-#include $(BUILD_SHARED_LIBRARY)
+ifeq ($(OMAP_ENHANCEMENT), true)
+include $(CLEAR_VARS)
 
+LOCAL_SRC_FILES:= \
+	$(commonSources)
+
+LOCAL_MODULE:= libtinyxml
+
+include $(BUILD_STATIC_LIBRARY)
+endif
 
